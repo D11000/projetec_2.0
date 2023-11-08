@@ -1,13 +1,13 @@
 from flask import Flask, render_template, render_template, request, redirect, url_for,session
 from flask_mysqldb import MySQL
-import _mysql_connector
+
 app = Flask(__name__)
 
 # Rotas
 
 @app.route('/')
 def index():
-  return render_template('index.html', livros=livros, titulo='Página principal')
+  return render_template('login.html', livros=livros, titulo='Página principal')
 
 @app.route('/login')
 def login():
@@ -159,9 +159,7 @@ livros = {
   'emalta': livrosemalta,
   'recentes': livrosrecentes,
   'famosos': livrosfamosos}
-app.secret_key = 'projetec'
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_DB'] = 'biblioteca'
+
 
     # Lógica para carregar livros famosos
 
@@ -202,13 +200,7 @@ def logout():
 #Banco dos livros
 
 
-app.secret_key = 'projetec'
-app.config['MYSQL_HOST'] = 'localhost'
 
-
-app.config['MYSQL_DB'] = 'biblioteca'
-
-mysql = MySQL(app)
 
 @app.route('/adicionar_Livros', methods=['POST'])
 
